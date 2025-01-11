@@ -33,7 +33,7 @@ export const MainView = () => {
 
     if (selectedMovie) {
         return (
-            <MoviewView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+            <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
         );
     }
 
@@ -55,4 +55,4 @@ export const MainView = () => {
         </div>
     );
 
-}
+};
