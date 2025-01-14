@@ -18773,8 +18773,7 @@ const MainView = ()=>{
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: movies.map((movie)=>{
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+        children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                 movie: movie,
                 onMovieClick: (newSelectedMovie)=>{
                     setSelectedMovie(newSelectedMovie);
@@ -18782,15 +18781,27 @@ const MainView = ()=>{
             }, movie.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
                 lineNumber: 47,
-                columnNumber: 17
-            }, undefined);
-        })
+                columnNumber: 13
+            }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
         lineNumber: 45,
-        columnNumber: 9
+        columnNumber: 12
     }, undefined);
-};
+}; // return (
+ //     <div>
+ //         {movies.map((movie) => {
+ //             <MovieCard
+ //                 key={movie.id}
+ //                 movie={movie}
+ //                 // onMovieClick={(newSelectedMovie) => {
+ //                 //     setSelectedMovie(newSelectedMovie);
+ //                 // }}
+ //             />
+ //         })}
+ //     </div>
+ // );
+ // };
 _s(MainView, "M/gUOwW+Ggfpp4bvm80yztPC4yc=");
 _c = MainView;
 var _c;
