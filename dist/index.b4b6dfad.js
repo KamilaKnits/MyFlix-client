@@ -18737,7 +18737,7 @@ const MainView = ()=>{
         {
             id: 1,
             title: "Death Becomes Her",
-            image: "https://www.imdb.com/title/tt0104070/mediaviewer/rm106180097/?ref_=tt_ov_i",
+            image: "https://www.https://www.imdb.com/title/tt0104070/mediaviewer/rm1183163393",
             genre: "Drama",
             director: "Robert Zemeckis"
         },
@@ -18788,21 +18788,8 @@ const MainView = ()=>{
         lineNumber: 45,
         columnNumber: 12
     }, undefined);
-}; // return (
- //     <div>
- //         {movies.map((movie) => {
- //             <MovieCard
- //                 key={movie.id}
- //                 movie={movie}
- //                 // onMovieClick={(newSelectedMovie) => {
- //                 //     setSelectedMovie(newSelectedMovie);
- //                 // }}
- //             />
- //         })}
- //     </div>
- // );
- // };
-_s(MainView, "M/gUOwW+Ggfpp4bvm80yztPC4yc=");
+};
+_s(MainView, "1PTLHQvVugs/00/T5hF6sWjNNCY=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");

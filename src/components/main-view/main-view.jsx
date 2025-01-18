@@ -8,7 +8,7 @@ export const MainView = () => {
         {
             id: 1,
             title: "Death Becomes Her",
-            image: "https://www.imdb.com/title/tt0104070/mediaviewer/rm106180097/?ref_=tt_ov_i",
+            image: "https://www.https://www.imdb.com/title/tt0104070/mediaviewer/rm1183163393",
             genre: "Drama",
             director: "Robert Zemeckis",
 
