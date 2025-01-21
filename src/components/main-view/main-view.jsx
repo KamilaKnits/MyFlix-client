@@ -11,7 +11,15 @@ export const MainView = () => {
         fetch("https://mymovieflix-a3c1af20a30e.herokuapp.com/")
         .then((response) => response.json())
         .then((data) => {
-            console.log("movies from api:", data);
+            const moviesFromApi = data.docs.map((doc) => {
+                return {
+                    id: doc.key,
+                    title:doc.title,
+                    director: doc.director.name[0]
+                };
+            });
+
+            setMovies(moviesFromApi);
         });
         
     }, []);
