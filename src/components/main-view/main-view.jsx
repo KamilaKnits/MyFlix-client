@@ -1,35 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
+import PropTypes from "prop-types";
 
 export const MainView = () => {
-    const [movies, setMovies] = useState([
-
-        {
-            id: 1,
-            title: "Death Becomes Her",
-            image: "https://www.imdb.com/title/tt0104070/mediaviewer/rm106180097/?ref_=tt_ov_i",
-            genre: "Drama",
-            director: "Robert Zemeckis",
-
-        },
-        {
-            id: 2,
-            title: "Back to the Future",
-            image: "https://www.imdb.com/title/tt0088763/mediaviewer/rm554638848/?ref_=tt_ov_i",
-            genre: "High-Concept Comedy",
-            director: "Robert Zemeckis"
-        },
-        {
-            id: 3,
-            title: "Up",
-            image: "https://www.imdb.com/title/tt1049413/mediaviewer/rm3826338560/?ref_=tt_ov_i",
-            genre: "Adventure",
-            director: "Peter Docter"
-        }
-    ]);
+    const [movies, setMovies] = useState([]);
 
     const [selectedMovie, setSelectedMovie] = useState(null);
+
+    useEffect(() => {
+        fetch("https://mymovieflix-a3c1af20a30e.herokuapp.com")
+        .then((response) => response.json())
+        .then((data) => {
+            // console.log("movies from api:", data);
+            const moviesFromApi = data.docs.map((doc) => {
+                return{
+                    id: doc.key,
+                    title: doc.title,
+                    // image: "https://mymovieflix-a3c1af20a30e.herokuapp.com",
+                    director: doc.director[0]
+                };
+            });
+
+            setMovies(moviesFromApi);
+        });
+    }, []);
 
     if (selectedMovie) {
         return (

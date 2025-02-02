@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export const MovieCard = ({ movie, onMovieClick }) => {
     return (
         <div
@@ -10,16 +12,15 @@ export const MovieCard = ({ movie, onMovieClick }) => {
     );
 };
 
-<<<<<<< Updated upstream
-=======
+//below is where all props constraints for the mMovieCard are defined
 
-MovieCard.propTypes = {
+MovieCard.PropTypes = {
     movie: PropTypes.shape({
         title: PropTypes.string,
-        image: PropTypes.string,
-        director: PropTypes.string,
-        genre: PropTypes.string,
-    }).isRequired,
+        description: PropTypes.string,
+        director: PropTypes.string 
+    }),
     onMovieClick: PropTypes.func.isRequired
 };
->>>>>>> Stashed changes
+
+
