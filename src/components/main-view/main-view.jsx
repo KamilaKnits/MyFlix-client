@@ -28,6 +28,7 @@ export const MainView = () => {
                         Birth: movie.Director.Birth,
                         Death: movie.Director.Death
                     },
+                    ImagePath: movie.ImagePath,
                 };
             });
 
