@@ -14,17 +14,29 @@ export const LoginView= ({ onLoggedIn}) => {
             secret: password
         };
 
-        fetch("https://mymovieflix-a3c1af20a30e.herokuapp.com", {
+        fetch("https://mymovieflix-a3c1af20a30e.herokuapp.com/login", {
             method: "POST",
+            headers: {
+                "Content-Type": "appliication/json"
+            },
             body: JSON.stringify(data)
-        }).then((response) => {
-            if (response.ok) {
-                onLoggedIn(username);
+        })
+        .then((response) => response.json()) 
+        .then((data) => {
+            console.log("Login response: ", data);
+
+            if (data.user) {
+                localStorage.setItem("user", JSON.stringigy(data.user));
+                localStorage.setItem("token", data.token);
+                onLoggedIn(data.user, data.token);
             } else {
-                alert("Login failed");
+                alert("No such user");
             }
+        })
+        .catch((e) => {
+            alert("Something went wrong");
         });
-    };
+    }  
     
    return (
     <form onSubmit={handleSubmit}>
