@@ -51,7 +51,16 @@ export const MainView = () => {
     }
 
 
-    return <div>
+    return (
+    <div>
+        <button 
+        onClick={() => { 
+            setUser(null);
+            }}
+            >
+            Logtout
+            </button>
+
         {movies.map((movie) => (
             <MovieCard
                 key={movie.id}
@@ -61,7 +70,9 @@ export const MainView = () => {
                 }}
             >
             </MovieCard>
-        ))}</div>
+        ))}
+        </div>
+    );
 };
 
 
