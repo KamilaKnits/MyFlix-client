@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
+import PropTypes from "prop-types";
 
 export const MainView = () => {
     const [movies, setMovies] = useState([]);
@@ -8,20 +9,31 @@ export const MainView = () => {
     const [selectedMovie, setSelectedMovie] = useState(null);
 
     useEffect(() => {
-        fetch("https://mymovieflix-a3c1af20a30e.herokuapp.com/")
+        fetch("https://mymovieflix-a3c1af20a30e.herokuapp.com/movies")
         .then((response) => response.json())
         .then((data) => {
-            const moviesFromApi = data.docs.map((doc) => {
-                return {
-                    id: doc.key,
-                    title:doc.title,
-                    director: doc.director.name[0]
+            // console.log("movies from api:", data);
+            const moviesFromApi = data.map((movie) => {
+                return{
+                    _id: movie._id,
+                    Title: movie.Title,
+                    Description: movie.Description,
+                    Genre: {
+                        Name: movie.Genre.Name,
+                        Description: movie.Genre.Description,
+                    },
+                    Director: {
+                        Name: movie.Director.Name,
+                        Bio: movie.Director.Bio,
+                        Birth: movie.Director.Birth,
+                        Death: movie.Director.Death
+                    },
+                    ImagePath: movie.ImagePath,
                 };
             });
 
             setMovies(moviesFromApi);
         });
-        
     }, []);
 
     if (selectedMovie) {
