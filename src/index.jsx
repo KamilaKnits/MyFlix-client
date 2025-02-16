@@ -13,7 +13,7 @@ const MyFlixApplication = () => {
     <Container>
       <MainView />
     </Container>
-  )
+  );
 };
 
 
