@@ -11,11 +11,11 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 export const MainView = () => {
 
     const [movies, setMovies] = useState([]);
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(true);
 
 
     useEffect(() => {
-        fetch("https://mymovieflix-a3c1af20a30e.herokuapp.com")
+        fetch("https://mymovieflix-a3c1af20a30e.herokuapp.com/movies")
             .then((response) => response.json())
             .then((data) => {
 
@@ -62,7 +62,7 @@ export const MainView = () => {
                     }
                     />
 
-                    <Route //login 
+                    <Route //login page
                     path="/login"
                     element={
                         <>
@@ -77,8 +77,8 @@ export const MainView = () => {
                     }
                     />
 
-                    <Route //selectedMovie
-                    path="/movies"
+                    <Route //selecte a Movie
+                    path="/movies/:movieId"
                     element={
                         <>
                             { !user ? (
