@@ -25,17 +25,9 @@ export const MovieView = ({ movie }) => {
                 <span>{movie.Director.Name}</span>
             </div>
             <Link to={"/"}>
-            <button className="back-button">Back</button>
-            </Link> 
+                <button className="back-button">Back</button>
+            </Link>
         </div>
     );
 };
 
-// MovieView.PropTypes = {
-//     movie: PropTypes.shape({
-//         Title: PropTypes.string,
-//         Description: PropTypes.string,
-//         Director: PropTypes.string 
-//     }),
-//     onBackClick: PropTypes.func.isRequired
-// };
