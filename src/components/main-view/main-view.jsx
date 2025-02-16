@@ -10,7 +10,7 @@ export const MainView = () => {
     // const storedUser = JSON.parse(localStorage.getItem("user"));
     // const storedToken = localStorage.getItem("token");
     // const [token, setToken] = useState(null);
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(true);
     const [movies, setMovies] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState(null);
 
@@ -63,9 +63,8 @@ export const MainView = () => {
             </Col>
             
         ) : selectedMovie ? (
-            <Col md={8}>
+            <Col md={8} style={{ border: "1px solid black"}}>
             <MovieView
-                
                 movie={selectedMovie} 
                 onBackClick={() => setSelectedMovie(null)} 
                 />
@@ -73,7 +72,7 @@ export const MainView = () => {
             ) : movies.length === 0 ? (
             <div>The list is empty!</div>
             ) : (
-                <div>
+               <div>
                 {movies.map((movie) => (
                     <Col className="mb-5" key={movie._id} md={3}>
                 <MovieCard
@@ -85,7 +84,7 @@ export const MainView = () => {
                 </MovieCard>
                 </Col>
             ))}
-        </div>
+         </div>
             )}
             </Row>
         );
