@@ -15,10 +15,10 @@ export const ProfileView = () => {
     const updateUser = () => {
 
         const updatedUser = {
-            username: username,
-            password: password,
-            email: email,
-            birthday: birthday
+            Username: username,
+            Password: password,
+            Email: email,
+            Birthday: birthday
         };
 
         fetch(`https://movie-flix-api-ca627b5a7961.herokuapp.com/users/${storedUser.username}`, {
@@ -57,8 +57,8 @@ return (
 
         </Container>
         <Container>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group>
+            <Form >
+            <Form.Group controlId="formUsername">
                     <Form.Label>Username:</Form.Label>
                     <Form.Control
                         type="text"
@@ -67,7 +67,7 @@ return (
                     />
                 </Form.Group>
 
-                <Form.Group>
+                <Form.Group controlId="formPassword">
                     <Form.Label>Password:</Form.Label>
                     <Form.Control
                         type="password"
@@ -77,7 +77,7 @@ return (
                     />
                 </Form.Group>
 
-                <Form.Group>
+                <Form.Group controlId="formEmail">
                     <Form.Label>Email:</Form.Label>
                     <Form.Control
                         type="email"
@@ -87,7 +87,7 @@ return (
                     />
                 </Form.Group>
 
-                <Form.Group>
+                <Form.Group controlId="formDate">
                     <Form.Label>Birthday:</Form.Label>
                     <Form.Control
                         type="date"
