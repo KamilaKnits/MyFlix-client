@@ -18755,7 +18755,7 @@ const MainView = ()=>{
     // const storedUser = JSON.parse(localStorage.getItem("user"));
     // const storedToken = localStorage.getItem("token");
     // const [token, setToken] = useState(null);
-    const [user, setUser] = (0, _react.useState)(true);
+    const [user, setUser] = (0, _react.useState)(null);
     const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
@@ -18865,7 +18865,7 @@ const MainView = ()=>{
  //         </button>
  // </div>
  // );
-_s(MainView, "GX1Et5S1a3Vm4v0xILOhUj5tHQ8=");
+_s(MainView, "sVgykBIV/1Bi0uv+6wh4yv/6H2Y=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
