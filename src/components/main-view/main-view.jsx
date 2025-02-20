@@ -4,13 +4,16 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { NavigationView } from "../navigation-view/navigation-view";
+import { ProfileView } from "../profile-view/profile-view";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 
 export const MainView = () => {
-
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedToken = localStorage.getItem("token");
+    
     const [movies, setMovies] = useState([]);
     const [user, setUser] = useState(true);
 
@@ -55,7 +58,7 @@ export const MainView = () => {
             <Row className="justify-content-md-center">
                 <Routes>
                     <Route //create a new user;signup
-                        path="/users"
+                        path="/signup"
                         element={
                             <>
                                 {user ? (
@@ -85,7 +88,7 @@ export const MainView = () => {
                     />
 
                     <Route //selecte a Movie
-                        path="/users/:Username/movies/:MovieID"
+                        path="/movies/:MovieID"
                         element={
                             <>
                                 {!user ? (
@@ -117,6 +120,19 @@ export const MainView = () => {
                                             </Col>
                                         ))}
                                     </>
+                                )}
+                            </>
+                        }
+                    />
+
+                    <Route //profile view
+                        path="/profile"
+                        element={
+                            <>
+                                {!user ? (
+                                    <Navigate to="/login" replace />
+                                ) : (
+                                    <ProfileView />
                                 )}
                             </>
                         }

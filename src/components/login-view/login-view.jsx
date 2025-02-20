@@ -8,12 +8,11 @@ export const LoginView = ({ onLoggedIn }) => {
     const [password, setPassword] = useState("");
 
     const handleSubmit = (event) => {
-
         event.preventDefault();
 
         const data = {
-            access: username,
-            secret: password
+            Username: username,
+            Password: password
         };
 
         fetch("https://mymovieflix-a3c1af20a30e.herokuapp.com/login", {
@@ -29,7 +28,7 @@ export const LoginView = ({ onLoggedIn }) => {
                 console.log("Login response: ", data);
 
                 if (data.user) {
-                    localStorage.setItem("user", JSON.stringigy(data.user));
+                    localStorage.setItem("user", JSON.stringify(data.user));
                     localStorage.setItem("token", data.token);
                     onLoggedIn(data.user, data.token);
                 } else {
@@ -39,7 +38,7 @@ export const LoginView = ({ onLoggedIn }) => {
             .catch((e) => {
                 alert("Something went wrong");
             });
-    }
+    };
 
     return (
         <Form onSubmit={handleSubmit}>
