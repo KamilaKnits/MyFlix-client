@@ -4,7 +4,7 @@ import "./navigation-view.scss";
 
 export const NavigationView = ({ user, onLoggedOut }) => {
     return (
-        <Navbar className="navbar navbar-dark bg-dark" expand="lg">
+        <Navbar className="navbar navbar-light" expand="lg">
             <Container fluid>
                 <Navbar.Brand as={Link} to="/">
                     MyFlix App

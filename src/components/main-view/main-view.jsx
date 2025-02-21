@@ -11,9 +11,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 
 export const MainView = () => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    const storedToken = localStorage.getItem("token");
-    
+        
     const [movies, setMovies] = useState([]);
     const [user, setUser] = useState(true);
 
@@ -87,7 +85,7 @@ export const MainView = () => {
                         }
                     />
 
-                    <Route //selecte a Movie
+                    <Route //select a Movie
                         path="/movies/:MovieID"
                         element={
                             <>

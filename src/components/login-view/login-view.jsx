@@ -12,7 +12,7 @@ export const LoginView = ({ onLoggedIn }) => {
 
         const data = {
             Username: username,
-            Password: password
+            Password: password,
         };
 
         fetch("https://mymovieflix-a3c1af20a30e.herokuapp.com/login", {
@@ -35,9 +35,7 @@ export const LoginView = ({ onLoggedIn }) => {
                     alert("No such user");
                 }
             })
-            .catch((e) => {
-                alert("Something went wrong");
-            });
+            
     };
 
     return (
