@@ -18753,7 +18753,7 @@ var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
     const [movies, setMovies] = (0, _react.useState)([]);
-    const [user, setUser] = (0, _react.useState)(true);
+    const [user, setUser] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
         fetch("https://mymovieflix-a3c1af20a30e.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
             const moviesFromApi = data.map((movie)=>{
@@ -18967,7 +18967,7 @@ const MainView = ()=>{
         columnNumber: 9
     }, undefined);
 };
-_s(MainView, "VZJc87cbXKioPbUXUaf1B0kpDcI=");
+_s(MainView, "ab5JO455OeNvAFNWOzXJw3WbfK8=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");

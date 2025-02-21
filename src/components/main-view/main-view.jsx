@@ -13,7 +13,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 export const MainView = () => {
         
     const [movies, setMovies] = useState([]);
-    const [user, setUser] = useState(true);
+    const [user, setUser] = useState(null);
 
 
     useEffect(() => {
