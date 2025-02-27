@@ -18753,7 +18753,7 @@ var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
     const [movies, setMovies] = (0, _react.useState)([]);
-    const [user, setUser] = (0, _react.useState)(null);
+    const [user, setUser] = (0, _react.useState)(true);
     (0, _react.useEffect)(()=>{
         fetch("https://mymovieflix-a3c1af20a30e.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
             const moviesFromApi = data.map((movie)=>{
@@ -18967,7 +18967,7 @@ const MainView = ()=>{
         columnNumber: 9
     }, undefined);
 };
-_s(MainView, "ab5JO455OeNvAFNWOzXJw3WbfK8=");
+_s(MainView, "VZJc87cbXKioPbUXUaf1B0kpDcI=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -34838,10 +34838,10 @@ var _reactRouter = require("react-router");
 var _reactRouterDom = require("react-router-dom");
 var _movieViewScss = require("./movie-view.scss");
 var _s = $RefreshSig$();
-const MovieView = ({ movie })=>{
+const MovieView = ({ movies })=>{
     _s();
-    const { movieId } = (0, _reactRouter.useParams)();
-    // const movie = movies.find((m) => m._id === movieId);
+    const { MovieID } = (0, _reactRouter.useParams)();
+    const movie = movies.find((m)=>m._id === MovieID);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -34946,7 +34946,7 @@ const MovieView = ({ movie })=>{
         columnNumber: 9
     }, undefined);
 };
-_s(MovieView, "e2L2DPdRH1AShA7yIOCsYRlzvlI=", false, function() {
+_s(MovieView, "9NuEabzFM24Cni8N79O6IWO1FYU=", false, function() {
     return [
         (0, _reactRouter.useParams)
     ];
