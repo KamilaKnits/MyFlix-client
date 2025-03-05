@@ -13,7 +13,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 export const MainView = () => {
         
     const [movies, setMovies] = useState([]);
-    const [user, setUser] = useState(true);
+    const [user, setUser] = useState(null);
 
 
     useEffect(() => {
@@ -44,6 +44,25 @@ export const MainView = () => {
             });
     }, []);
 
+    const addToFavorites = (movieId) => {
+        // console.log("movieId: ", movieId);
+       //api call to add movie to favorites
+       fetch(`https://movie-flix-api-ca627b5a7961.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
+        method: "POST"
+        })
+        .then(
+            alert("added to favorites")
+        )
+    };
+    
+    const removeFromFavorites = (movieId) => {
+        fetch(`https://movie-flix-api-ca627b5a7961.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
+            method: "DELETE"
+            })
+            .then(
+                alert("removed from favorites")
+            )
+    };
 
     return (
         <BrowserRouter>
@@ -114,7 +133,7 @@ export const MainView = () => {
                                     <>
                                         {movies.map((movie) => (
                                             <Col className="mb-4" key={movie._id} md={3}>
-                                                <MovieCard movie={movie} />
+                                                <MovieCard movie={movie} addToFavorites={addToFavorites} />
                                             </Col>
                                         ))}
                                     </>
@@ -130,7 +149,7 @@ export const MainView = () => {
                                 {!user ? (
                                     <Navigate to="/login" replace />
                                 ) : (
-                                    <ProfileView />
+                                    <ProfileView user={user} movies={movies}/>
                                 )}
                             </>
                         }

@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import{ Card, Button } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 
-export const MovieCard = ({ movie }) => {
+export const MovieCard = ({ movie, addToFavorites, removeFromFavorites }) => {
     return (
         <Card className="h-100">
             <Card.Img variant="top" src={movie.ImagePath} />
@@ -12,8 +12,20 @@ export const MovieCard = ({ movie }) => {
                 <Card.Title>{movie.Title}</Card.Title>
                 <Card.Text>{movie.Director.Name}</Card.Text>
                 <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
-                <Button variant="primary">Open</Button>
+                    <Button variant="primary">Open</Button>
                 </Link>
+                {/* 
+            IF Already favorited, show Remove from Favorites else show Add to Favorites
+            */}
+              
+            
+                <Button variant="link" onClick={() => removeFromFavorites(movie._id)}>
+                    Remove from Favorites
+                </Button>
+
+                <Button variant="link" onClick={() => addToFavorites(movie._id)}>
+                    Add to Favorites
+                </Button>
             </Card.Body>
         </Card>
     );
@@ -28,7 +40,7 @@ MovieCard.PropTypes = {
         director: PropTypes.string,
         genre: PropTypes.string,
     }).isRequired,
-   
+
 };
 
 
