@@ -48,20 +48,31 @@ export const MainView = () => {
         // console.log("movieId: ", movieId);
        //api call to add movie to favorites
        fetch(`https://movie-flix-api-ca627b5a7961.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
-        method: "POST"
+        method: "POST",
         })
-        .then(
-            alert("added to favorites")
-        )
+        .then((response) => {
+            if (response.ok) {
+                alert("added to favorites!");
+                window.location.reload();
+            } else {
+                alert("unable to add to favorites!");
+            }
+        });
+        
     };
-    
+
     const removeFromFavorites = (movieId) => {
         fetch(`https://movie-flix-api-ca627b5a7961.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
-            method: "DELETE"
+            method: "DELETE",    
             })
-            .then(
-                alert("removed from favorites")
-            )
+            .then((response) => {
+                if (response.ok) {
+                    alert("deleted from favorites!");
+                    window.location.reload();
+                } else {
+                    alert("unable to delete from favorites!");
+                }
+            });
     };
 
     return (
@@ -133,7 +144,7 @@ export const MainView = () => {
                                     <>
                                         {movies.map((movie) => (
                                             <Col className="mb-4" key={movie._id} md={3}>
-                                                <MovieCard movie={movie} addToFavorites={addToFavorites} />
+                                                <MovieCard movie={movie} addToFavorites={addToFavorites} removeFromFavorites={removeFromFavorites} />
                                             </Col>
                                         ))}
                                     </>

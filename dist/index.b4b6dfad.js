@@ -18922,7 +18922,8 @@ const MainView = ()=>{
                                             md: 3,
                                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                                                 movie: movie,
-                                                addToFavorites: addToFavorites
+                                                addToFavorites: addToFavorites,
+                                                removeFromFavorites: removeFromFavorites
                                             }, void 0, false, {
                                                 fileName: "src/components/main-view/main-view.jsx",
                                                 lineNumber: 136,
@@ -19056,7 +19057,7 @@ const MovieCard = ({ movie, addToFavorites, removeFromFavorites })=>{
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                         variant: "link",
                         onClick: ()=>removeFromFavorites(movie._id),
-                        children: "Remove from Favorites"
+                        children: "Remove from Favorite"
                     }, void 0, false, {
                         fileName: "src/components/movie-card/movie-card.jsx",
                         lineNumber: 22,
@@ -19065,7 +19066,7 @@ const MovieCard = ({ movie, addToFavorites, removeFromFavorites })=>{
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                         variant: "link",
                         onClick: ()=>addToFavorites(movie._id),
-                        children: "Add to Favorites"
+                        children: "Add to Favorite"
                     }, void 0, false, {
                         fileName: "src/components/movie-card/movie-card.jsx",
                         lineNumber: 26,

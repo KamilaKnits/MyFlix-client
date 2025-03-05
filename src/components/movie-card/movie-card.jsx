@@ -20,11 +20,11 @@ export const MovieCard = ({ movie, addToFavorites, removeFromFavorites }) => {
               
             
                 <Button variant="link" onClick={() => removeFromFavorites(movie._id)}>
-                    Remove from Favorites
+                    Remove from Favorite
                 </Button>
 
                 <Button variant="link" onClick={() => addToFavorites(movie._id)}>
-                    Add to Favorites
+                    Add to Favorite
                 </Button>
             </Card.Body>
         </Card>
