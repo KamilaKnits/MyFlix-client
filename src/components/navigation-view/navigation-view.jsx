@@ -1,5 +1,5 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import "./navigation-view.scss";
 
 export const NavigationView = ({ user, onLoggedOut }) => {

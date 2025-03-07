@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Card, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 
 export const MovieCard = ({ movie, addToFavorites, removeFromFavorites }) => {
