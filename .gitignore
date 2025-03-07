@@ -2,5 +2,18 @@ node_modules
 .cache
 .parcel-cache
 dist
+<<<<<<< HEAD
+=======
+dist/index.b4b6dfad.js.map
+dist/index.2212206d.css
+dist/index.2212206d.css.map
+dist/index.b4b6dfad.js
+dist/index.2212206d.css
+dist/index.2212206d.css.map
+dist/index.b4b6dfad.js
+dist/index.b4b6dfad.js.map
+dist/index.b4b6dfad.js
+dist/index.b4b6dfad.js.map
+>>>>>>> develop-clientside-app-routing
 dist/index.b4b6dfad.js
 dist/index.b4b6dfad.js.map

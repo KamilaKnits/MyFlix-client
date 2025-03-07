@@ -1,10 +1,15 @@
-import PropTypes from "prop-types";
+import { useParams } from "react-router";
+import { Link } from "react-router";
+import "./movie-view.scss";
 
-export const MovieView = ({ movie, onBackClick }) => {
+export const MovieView = ({ movies }) => {
+    const { MovieID } = useParams();
+    const movie = movies.find((m) => m._id === MovieID);
+
     return (
         <div>
             <div>
-                <img src={movie.ImagePath} />
+                <img className="w-100" src={movie.ImagePath} />
             </div>
             <div>
                 <span>Title: </span>
@@ -18,16 +23,10 @@ export const MovieView = ({ movie, onBackClick }) => {
                 <span>Director: </span>
                 <span>{movie.Director.Name}</span>
             </div>
-            <button onClick={onBackClick}>Back</button>
+            <Link to={"/"}>
+                <button className="back-button">Back</button>
+            </Link>
         </div>
     );
 };
 
-MovieView.PropTypes = {
-    movie: PropTypes.shape({
-        Title: PropTypes.string,
-        Description: PropTypes.string,
-        Director: PropTypes.string 
-    }),
-    onBackClick: PropTypes.func.isRequired
-};
