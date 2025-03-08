@@ -11,9 +11,10 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router';
 
 
 export const MainView = () => {
-        
+
     const [movies, setMovies] = useState([]);
     const [user, setUser] = useState(null);
+    const [favoriteMovies, setFavoriteMovies] = useState([]);
 
 
     useEffect(() => {
@@ -46,34 +47,51 @@ export const MainView = () => {
 
     const addToFavorites = (movieId) => {
         // console.log("movieId: ", movieId);
-       //api call to add movie to favorites
-       fetch(`https://movie-flix-api-ca627b5a7961.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
-        method: "POST",
+        //api call to add movie to favorites
+        fetch(`https://mymovieflix-a3c1af20a30e.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body:JSON.stringify(movieId)
         })
-        .then((response) => {
+        .then(response => {
+
             if (response.ok) {
+                setFavoriteMovies((favoriteMovies) => [...favoriteMovies, movieId]);
                 alert("added to favorites!");
                 window.location.reload();
-            } else {
-                alert("unable to add to favorites!");
+            }
+                else { 
+                console.log("Error adding to favorites:", error)
+                return alert("unable to add to favorites!");
+                
             }
         });
-        
-    };
+    }
+    
 
     const removeFromFavorites = (movieId) => {
-        fetch(`https://movie-flix-api-ca627b5a7961.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
-            method: "DELETE",    
+            //api call to remove movie from favorites
+            fetch(`https://mymovieflix-a3c1af20a30e.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(movieId)
             })
-            .then((response) => {
+            .then(response => {
+
                 if (response.ok) {
-                    alert("deleted from favorites!");
-                    window.location.reload();
-                } else {
-                    alert("unable to delete from favorites!");
+                    setFavoriteMovies((favoriteMovies) => favoriteMovies.filter((movie) => movie._id !== movieId));
+                }
+                else {
+                    console.log("Error removing from favorites:", error);
+                    return alert("unable to remove from favorites");
                 }
             });
-    };
+        }
+    
 
     return (
         <BrowserRouter>
@@ -160,7 +178,7 @@ export const MainView = () => {
                                 {!user ? (
                                     <Navigate to="/login" replace />
                                 ) : (
-                                    <ProfileView user={user} movies={movies}/>
+                                    <ProfileView user={user} movies={movies} />
                                 )}
                             </>
                         }

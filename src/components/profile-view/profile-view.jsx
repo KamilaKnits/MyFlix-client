@@ -26,7 +26,7 @@ console.log(user);
             Birthday: birthday
         };
 
-        fetch(`https://movie-flix-api-ca627b5a7961.herokuapp.com/users/${user.Username}`, {
+        fetch(`https://mymovieflix-a3c1af20a30e.herokuapp.com/users/${user.Username}`, {
             method: "PUT",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -53,7 +53,7 @@ console.log(user);
     };
 
     const handleDeregister = () => {
-        fetch(`https://movie-flix-api-ca627b5a7961.herokuapp.com/users/${user.Username}`, {
+        fetch(`https://mymovieflix-a3c1af20a30e.herokuapp.com/users/${user.Username}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`,

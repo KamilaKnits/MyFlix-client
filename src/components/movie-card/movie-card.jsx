@@ -17,15 +17,15 @@ export const MovieCard = ({ movie, addToFavorites, removeFromFavorites }) => {
                 {/* 
             IF Already favorited, show Remove from Favorites else show Add to Favorites
             */}
-              
+            
+                <Button variant="link" onClick={() => addToFavorites(movie._id)}>
+                    Add to list
+                </Button>
             
                 <Button variant="link" onClick={() => removeFromFavorites(movie._id)}>
-                    Remove from Favorite
+                    Remove from list
                 </Button>
 
-                <Button variant="link" onClick={() => addToFavorites(movie._id)}>
-                    Add to Favorite
-                </Button>
             </Card.Body>
         </Card>
     );

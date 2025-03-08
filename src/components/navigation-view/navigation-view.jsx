@@ -7,7 +7,7 @@ export const NavigationView = ({ user, onLoggedOut }) => {
         <Navbar className="navbar navbar-light" expand="lg">
             <Container fluid>
                 <Navbar.Brand as={Link} to="/">
-                    MyFlix App
+                    Knitflix
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
