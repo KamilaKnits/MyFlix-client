@@ -69,18 +69,16 @@ export const MainView = () => {
             body:JSON.stringify(movieId)
         })
         .then(response => {
-
             if (response.ok) {
                 setFavoriteMovies((favoriteMovies) => [...favoriteMovies, movieId]);
                 alert("added to favorites!");
                 window.location.reload();
             }
-                else { 
-                console.log("Error adding to favorites:", error)
-                return alert("unable to add to favorites!");
-                
-            }
-        });
+        })
+        .catch ((error) => {
+            console.error("Error adding to favorites:", error)
+            return alert("unable to add to favorites!");
+        })
     }
     
 
@@ -94,15 +92,14 @@ export const MainView = () => {
                 body: JSON.stringify(movieId)
             })
             .then(response => {
-
                 if (response.ok) {
                     setFavoriteMovies((favoriteMovies) => favoriteMovies.filter((movie) => movie._id !== movieId));
                 }
-                else {
-                    console.log("Error removing from favorites:", error);
-                    return alert("unable to remove from favorites");
-                }
-            });
+            })
+            .catch((error) => {
+                console.error("Error removing from favorites:", error);
+                return alert("unable to remove from favorites");
+            })
         }
     
 
