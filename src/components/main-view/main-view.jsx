@@ -15,7 +15,11 @@ export const MainView = () => {
     const [movies, setMovies] = useState([]);
     const [user, setUser] = useState(null);
     const [favoriteMovies, setFavoriteMovies] = useState([]);
-
+    const [genreFilter, setGenreFilter] = useState([]);
+    const [directorFilter, setDirectorFilter] = useState([]);
+    const [titleFilter, setTitleFilter] = useState([]);
+    
+    
 
     useEffect(() => {
         fetch("https://mymovieflix-a3c1af20a30e.herokuapp.com/movies")
@@ -44,6 +48,15 @@ export const MainView = () => {
                 setMovies(moviesFromApi);
             });
     }, []);
+    
+    const filterMovies = (movies) => {
+        return movies.filter((movie) => {
+            genreFilter ? movie.Genre.Name.includes(genreFilter) : true &&
+            directorFilter ? movie.Director.Name.includes(directorFilter) : true &&
+            titleFilter ? movie.Title.includes(titleFilter) : true 
+        });
+    }
+
 
     const addToFavorites = (movieId) => {
         // console.log("movieId: ", movieId);
@@ -97,6 +110,8 @@ export const MainView = () => {
         <BrowserRouter>
             <NavigationView
                 user={user}
+                // searchValue={searchValue}
+                // setSearchValue={setSearchValue}
                 onLoggedOut={() => {
                     setUser(null);
                 }}
