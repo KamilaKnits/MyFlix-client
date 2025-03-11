@@ -64,6 +64,7 @@ export const MainView = () => {
         fetch(`https://mymovieflix-a3c1af20a30e.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
             method: "POST",
             headers: {
+                Authorization: `Bearer ${token}`,
               "Content-Type": "application/json"
             },
             body:JSON.stringify(movieId)
@@ -87,6 +88,7 @@ export const MainView = () => {
             fetch(`https://mymovieflix-a3c1af20a30e.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
                 method: "DELETE",
                 headers: {
+                    Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(movieId)
