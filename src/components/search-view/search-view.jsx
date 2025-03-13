@@ -10,8 +10,8 @@ export const SearchView = ({ movies}) => {
     };
   
     
-    const filterMovies =  movies.filter(movie =>
-        movie.toLowerCase().includes(searchTerm.toLowerCase())
+    const filterMovies =  movies.filter((movie) =>
+        movie.Genre.Name.toLowerCase().includes(searchTerm.toLowerCase())
             // genreFilter ? movie.Genre.Name.includes(genreFilter) : true &&
             //     directorFilter ? movie.Director.Name.includes(directorFilter) : true &&
             //         titleFilter ? movie.Title.includes(titleFilter) : true
@@ -26,7 +26,7 @@ export const SearchView = ({ movies}) => {
             onChange={handleSearch}
             />
             <ul>
-                {filteredMovies.map((movie, index) => (
+                {filterMovies.map((movie, index) => (
                     <li key={index}>{movie}</li>
                 ))}
             </ul>

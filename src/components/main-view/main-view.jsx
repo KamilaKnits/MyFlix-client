@@ -120,6 +120,9 @@ export const MainView = () => {
                 }}
             />
             <Row className="justify-content-md-center">
+            {/* {location.pathname === "/" && (
+                <SearchView movies={movies}></SearchView>
+            )}  */}
                 <Routes>
                     <Route //create a new user;signup
                         path="/signup"
@@ -162,7 +165,7 @@ export const MainView = () => {
                                 ) : (
                                     <Col md={8}>
                                         <MovieView movies={movies} />
-                                        <SearchView movies={movies}></SearchView>
+                                        
                                     </Col>
                                 )}
                             </>
@@ -181,7 +184,11 @@ export const MainView = () => {
                                     <>
                                         {movies.map((movie) => (
                                             <Col className="mb-4" key={movie._id} md={3}>
-                                                <MovieCard movie={movie} addToFavorites={addToFavorites} removeFromFavorites={removeFromFavorites} />
+                                                <MovieCard 
+                                                movie={movie} 
+                                                addToFavorites={addToFavorites} 
+                                                removeFromFavorites={removeFromFavorites} />
+                                               
                                             </Col>
                                         ))}
                                     </>
