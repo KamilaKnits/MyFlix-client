@@ -1,22 +1,20 @@
 import { useState, useEffect } from "react";
 
 
-export const SearchView = ({ movies}) => {
+export const SearchView = ({ movies, setRenderedMovies}) => {
 
     const [searchTerm, setSearchTerm] = useState("");
   
     const handleSearch = (event) => {
+        
       setSearchTerm(event.target.value);
+      const filterMovies =  movies.filter((movie) =>
+        movie.Title.toLowerCase().includes(searchTerm.toLowerCase()) );
+
+      setRenderedMovies(filterMovies);
     };
   
     
-    const filterMovies =  movies.filter((movie) =>
-        movie.Genre.Name.toLowerCase().includes(searchTerm.toLowerCase())
-            // genreFilter ? movie.Genre.Name.includes(genreFilter) : true &&
-            //     directorFilter ? movie.Director.Name.includes(directorFilter) : true &&
-            //         titleFilter ? movie.Title.includes(titleFilter) : true
-        );
-  
     return(
         <div>
             <input
@@ -25,11 +23,6 @@ export const SearchView = ({ movies}) => {
             value={searchTerm}
             onChange={handleSearch}
             />
-            <ul>
-                {filterMovies.map((movie, index) => (
-                    <li key={index}>{movie}</li>
-                ))}
-            </ul>
         </div>
     );
 };

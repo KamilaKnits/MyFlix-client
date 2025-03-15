@@ -2,7 +2,10 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router";
 import "./navigation-view.scss";
 
-export const NavigationView = ({ user, onLoggedOut }) => {
+export const NavigationView = ({user, onLogout}) => {
+
+    
+
     return (
         <Navbar className="navbar navbar-light" expand="lg">
             <Container fluid>
@@ -30,7 +33,7 @@ export const NavigationView = ({ user, onLoggedOut }) => {
                                 <Nav.Link as={Link} to="/profile">
                                     Profile
                                 </Nav.Link>
-                                <Nav.Link onClick={onLoggedOut}>
+                                <Nav.Link onClick={onLogout}>
                                     Logout
                                 </Nav.Link>
                             </>

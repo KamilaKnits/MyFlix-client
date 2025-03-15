@@ -12,14 +12,13 @@ import { SearchView } from "../search-view/search-view";
 
 
 export const MainView = () => {
-
+    const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
+    const [user, setUser] = useState(storedUser ? storedUser : null);
     const [token, setToken] = useState(storedToken ? storedToken : null);
-    const [movies, setMovies] = useState([]);
-    const [user, setUser] = useState(null);
+    const [movies, setMovies] = useState([]);  
     const [favoriteMovies, setFavoriteMovies] = useState([]);
-    const [searchTerm, setSearchTerm] = useState("");
-
+    const [renderedMovies, setRenderedMovies] = useState([]);
 
     useEffect(() => {
         if (!token) {
@@ -53,13 +52,14 @@ export const MainView = () => {
                 });
 
                 setMovies(moviesFromApi);
+                setRenderedMovies(moviesFromApi);
             });
     }, [token]);
 
 
 
     function addToFavorites(movieId) {
-        // console.log("movieId: ", movieId);
+
         //api call to add movie to favorites
         fetch(`https://mymovieflix-a3c1af20a30e.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
             method: "POST",
@@ -67,7 +67,7 @@ export const MainView = () => {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(movieId)
+            // body: JSON.stringify(movieId)
         })
             .then(response => {
                 if (response.ok) {
@@ -94,7 +94,7 @@ export const MainView = () => {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(movieId)
+            // body: JSON.stringify(movieId)
         })
             .then(response => {
                 if (response.ok) {
@@ -120,9 +120,6 @@ export const MainView = () => {
                 }}
             />
             <Row className="justify-content-md-center">
-            {/* {location.pathname === "/" && (
-                <SearchView movies={movies}></SearchView>
-            )}  */}
                 <Routes>
                     <Route //create a new user;signup
                         path="/signup"
@@ -182,7 +179,8 @@ export const MainView = () => {
                                     <Col>The list is empty!</Col>
                                 ) : (
                                     <>
-                                        {movies.map((movie) => (
+                                    <SearchView setRenderedMovies={setRenderedMovies} movies={movies}></SearchView>
+                                        {renderedMovies.map((movie) => (
                                             <Col className="mb-4" key={movie._id} md={3}>
                                                 <MovieCard 
                                                 movie={movie} 
