@@ -14,9 +14,9 @@ This SPA:
 ## Features
 
 * Signup view - allows users to register
-* Login view - allows user to log in with a username and password
-* Main view - returns all movies with an image and tile.
-* Single move view - returns a single movie showing the title, description and director
+* Login view - allows users to log in with a username and password
+* Main view - returns all movies with an image and title.
+* Single move view - returns a single movie showing the image, title, description and director
 * Profile view - shows user's profile, displays favorite movies and also allows the user to deregister
 
 ## Setup:
@@ -31,11 +31,11 @@ Node.js npm (Node Package Manager)
    
    * Parcel (dev):
      
-          `npm install -g parcel`
+          npm install -g parcel
 
    * React :
    
-         `npm install --save react react-dom`
+         npm install --save react react-dom
 
 ## API 
 
