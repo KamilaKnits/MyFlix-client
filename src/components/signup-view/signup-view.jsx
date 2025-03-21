@@ -8,7 +8,7 @@ export const SignupView = () => {
     const [email, setEmail] = useState("");
     const [birthday, setBirthday] = useState("");
 
-    const handleSubmit = (event) => {
+    const signupUser = (event) => {
         event.preventDefault();
 
         const data = {
@@ -20,23 +20,32 @@ export const SignupView = () => {
 
         fetch("https://mymovieflix-a3c1af20a30e.herokuapp.com/users", {
             method: "POST",
-            body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
             }
-        }).then((response) => {
-            if (response.ok) {
-                alert("Signup successful");
-                window.location.reload();
-            } else {
-                alert("Signup failed");
-            }
-        });
+            return response.json()
+        })
+        .then(() => {
+                alert("Signup successful!");
+                window.location.href ="/login";
+            
+        })
+        .catch((error) => {
+            console.error("Signup error:", error);
+            alert(error.message);
+        })
 
     };
 
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={signupUser}>
             <Form.Group controlId="formUsername"> 
             <Form.Label>Username:</Form.Label>
                 <Form.Control

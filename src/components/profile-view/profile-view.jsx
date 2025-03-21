@@ -2,8 +2,11 @@ import { useState, useEffect } from "react";
 import { Form, Button, Row, Col, Card, Container } from 'react-bootstrap';
 import { MovieCard } from "../movie-card/movie-card";
 
-export const ProfileView = ({ user, movies }) => {
-console.log(user);
+export const ProfileView = ({ movies }) => {
+    
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem("token");
+    const [user, setUser] = useState(storedUser ? storedUser : null);
     const [username, setUsername] = useState(user.Username);
     const [password, setPassword] = useState(user.Password);
     const [email, setEmail] = useState(user.Email);
@@ -15,7 +18,7 @@ console.log(user);
         setFavoriteMovies(favoriteMovies);
     }, [user, movies]);
 
-    const handleUpdate = (event) => {
+    const updateUser = (event) => {
         event.preventDefault();
 
 
@@ -43,16 +46,24 @@ console.log(user);
             })
 
             .then(data => {
-                alert("Successfully udpated")
-                setUser(data)
+                alert("Successfully udpated");
+                setUser(data);
                 localStorage.setItem("user", JSON.stringify(data));
                 console.log("Successfully updated: ", data);
 
-            });
-        
+            })
+            .catch(error => {
+                console.error("Error updating account:", error);
+                alert("Failed to update your account. Please try again.");
+            })
+
     };
 
-    const handleDeregister = () => {
+    const deregisterUser = () => {
+        if (!window.confirm("Are you sure you want to delete your account?")) {
+            return;
+        }
+
         fetch(`https://mymovieflix-a3c1af20a30e.herokuapp.com/users/${user.Username}`, {
             method: "DELETE",
             headers: {
@@ -63,10 +74,16 @@ console.log(user);
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                alert("User Deleted");
+                } return response.json();
+            })
+            .then(() => {
                 localStorage.clear();
-                window.location.reload();
+                alert("Your account has been deleted");
+                window.location.href = "/login"
+            })
+            .catch(error => {
+                console.error("Error deleting account:", error);
+                alert("Failed to delete account. Please try again.");
             });
 
     };
@@ -77,7 +94,7 @@ console.log(user);
 
             <Col md={6}>
                 <h2>Profile View</h2>
-                <Form onSubmit={handleUpdate}>
+                <Form onSubmit={updateUser}>
                     <Form.Group controlId="formUsername">
                         <Form.Label>Username:</Form.Label>
                         <Form.Control
@@ -117,8 +134,8 @@ console.log(user);
                         />
                     </Form.Group>
 
-                    <Button variant="primary" onClick={handleUpdate}>Update Account</Button>
-                    <Button variant="warning" onClick={handleDeregister} >Delete Account</Button>
+                    <Button variant="primary" onClick={updateUser}>Update Account</Button>
+                    <Button variant="danger" onClick={deregisterUser} >Delete Account</Button>
                 </Form>
             </Col>
 

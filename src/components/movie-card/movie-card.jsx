@@ -4,10 +4,10 @@ import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router";
 
 
-export const MovieCard = ({ movie, addToFavorites, removeFromFavorites, isFave }) => {
-    const favs = []
-    const isFave = favs.includes(single._id)
-   
+export const MovieCard = ({ movie, addToFavorites, removeFromFavorites, favoriteMovies = [] }) => {
+console.log(favoriteMovies);
+    // const isFavorite = favoriteMovies?.some((fav) => fav._id === movie._id);
+    const isFavorite = favoriteMovies.includes( movie._id);
     return (
         <Card className="h-100">
             <Card.Img variant="top" src={movie.ImagePath} />
@@ -19,21 +19,17 @@ export const MovieCard = ({ movie, addToFavorites, removeFromFavorites, isFave }
                 </Link>
                 {/* 
             IF Already favorited, show Remove from Favorites else show Add to Favorites
-            
-            const isFavoarite = favs.include(if (favs.includes)(single._id )){ 
-            console.log true
-            } else {console.log false})
             */}
-                {isFave ?
+                {isFavorite ? (
                     <Button variant="link" onClick={() => removeFromFavorites(movie._id)}>
                         Remove from Favorite
-                    </Button> :
-
+                    </Button>
+                ) : (
                     <Button variant="link" onClick={() => addToFavorites(movie._id)}>
                         Add to Favorite
                     </Button>
 
-                }
+                )}
 
             </Card.Body>
         </Card>

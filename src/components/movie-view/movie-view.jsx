@@ -12,15 +12,15 @@ export const MovieView = ({ movies }) => {
                 <img className="w-100" src={movie.ImagePath} />
             </div>
             <div>
-                <span>Title: </span>
+                <span className="title">Title: </span>
                 <span>{movie.Title}</span>
             </div>
             <div>
-                <span>Description: </span>
+                <span className="description">Description: </span>
                 <span>{movie.Description}</span>
             </div>
             <div>
-                <span>Director: </span>
+                <span className="director">Director: </span>
                 <span>{movie.Director.Name}</span>
             </div>
             <Link to={"/"}>

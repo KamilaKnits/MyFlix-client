@@ -2,7 +2,7 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router";
 import "./navigation-view.scss";
 
-export const NavigationView = ({user, onLogout}) => {
+export const NavigationView = ({user, onLoggedOut}) => {
 
     
 
@@ -33,7 +33,7 @@ export const NavigationView = ({user, onLogout}) => {
                                 <Nav.Link as={Link} to="/profile">
                                     Profile
                                 </Nav.Link>
-                                <Nav.Link onClick={onLogout}>
+                                <Nav.Link onClick={onLoggedOut}>
                                     Logout
                                 </Nav.Link>
                             </>
