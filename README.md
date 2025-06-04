@@ -1,6 +1,6 @@
 # Knitflix
 
-Welcome to Knitflix! A single-page movie application built using React. It's based on its existing server-side code Myflix. Users can browse movies movies, mark their favorites and manage their profiles.\
+Welcome to Knitflix! A single-page movie application built using React. It's based on its existing server-side code Myflix. Users can browse movies movies, mark their favorites and manage their profiles.
 
 ## Description
 
